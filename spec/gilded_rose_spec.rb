@@ -18,6 +18,18 @@ describe GildedRose do
       expect(items[0].quality).to be >= 0
     end
 
+    it "tests if items decrease in quality over time by default" do
+      item = [Item.new("item", 3, 5)]
+      GildedRose.new(item).update_quality()
+      expect(item[0].quality).to eq 4
+    end
+
+    it "once the sell by date has passed, the item decreases in quality twice as fast" do
+      item = [Item.new("item", 0, 5)]
+      GildedRose.new(item).update_quality()
+      expect(item[0].quality).to eq 3
+    end
+
     it "tests if aged brie increases in quality" do
       items = [AgedBrie.new("Aged Brie", sell_in=2, quality=0)]
       GildedRose.new(items).update_quality()
