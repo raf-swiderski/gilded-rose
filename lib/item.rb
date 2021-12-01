@@ -13,6 +13,7 @@ class Item
 
     def update_quality()
       
+      @sell_in -= 1
       if @sell_in > 0 
         @quality -= 1
       else
@@ -23,12 +24,18 @@ class Item
 
     end
 
+    def max_quality
+      @quality = 50 if @quality > 50
+    end
+      
+
 end
 
 class AgedBrie < Item
 
     def update_quality
         @quality += 1
+        max_quality
     end
 
 end
@@ -37,6 +44,7 @@ class ElixirOfTheMongoose < Item
 
   def update_quality
       @quality -= 1
+      max_quality
   end
 
 end
@@ -44,8 +52,35 @@ end
 class Sulfuras < Item
 
   def update_quality
-    
+      max_quality
   end
 
 end
+
+class ConcertTickets < Item
+
+  def update_quality
+
+    @sell_in -= 1
+
+    if @sell_in <= -1
+          @quality = 0
+
+        elsif @sell_in <= 5
+          @quality += 3
+
+        elsif @sell_in <= 10
+
+          @quality += 2
+
+        else 
+
+          @quality += 1
+    end
+    max_quality
+
+  end
+
+end
+
 
