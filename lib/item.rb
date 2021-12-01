@@ -65,16 +65,11 @@ class ConcertTickets < Item
 
     if @sell_in <= -1
           @quality = 0
-
         elsif @sell_in <= 5
           @quality += 3
-
         elsif @sell_in <= 10
-
           @quality += 2
-
         else 
-
           @quality += 1
     end
     max_quality
@@ -82,5 +77,17 @@ class ConcertTickets < Item
   end
 
 end
+class ConjuredManaCake < Item
+
+  def update_quality
+
+    @quality -= 2
+    max_quality
+
+  end
+
+end
+
+
 
 
