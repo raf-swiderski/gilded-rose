@@ -14,6 +14,7 @@ class Item
     def update_quality()
         @quality = 0 if @quality < 0
     end
+
 end
 
 class AgedBrie < Item
@@ -23,3 +24,20 @@ class AgedBrie < Item
     end
 
 end
+
+class ElixirOfTheMongoose < Item
+
+  def update_quality
+      @quality -= 1
+  end
+
+end
+
+class Sulfuras < Item
+
+  def update_quality
+    
+  end
+
+end
+
