@@ -6,6 +6,7 @@ describe GildedRose do
   describe "#update_quality" do
 
   # Item class tests
+  
     it "does not change the name" do
       items = [Item.new("fixme", 0, 0)]
       GildedRose.new(items).update_quality()
@@ -37,7 +38,14 @@ describe GildedRose do
       expect(item[0].quality).to eq 3
     end
 
-    # classes inherited from Item
+    it "can update an expired item and a fresh one simulateously" do
+      items = [Item.new("Bread", -10, 5), Item.new("Apple", 4, 9)]
+      GildedRose.new(items).update_quality()
+      expect(items[0].quality).to eq 3
+      expect(items[1].quality).to eq 8
+    end
+
+    # testing classes inherited from Item
 
     it "tests if aged brie increases in quality" do
       items = [AgedBrie.new("Aged Brie", sell_in=2, quality=0)]
