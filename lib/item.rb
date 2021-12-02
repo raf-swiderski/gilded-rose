@@ -27,66 +27,21 @@ class Item
     def max_quality
       @quality = 50 if @quality > 50
     end
-      
-
 end
 
-class AgedBrie < Item
+require_relative 'inherited_items/aged_brie' 
+require_relative 'inherited_items/exilir_of_the_mongoose'
+require_relative 'inherited_items/sulfuras'
+require_relative 'inherited_items/concert_tickets'
+require_relative 'inherited_items/conjured_mana_cake'
 
-    def update_quality
-        @quality += 1
-        max_quality
-    end
 
-end
 
-class ElixirOfTheMongoose < Item
 
-  def update_quality
-      @quality -= 1
-      max_quality
-  end
 
-end
 
-class Sulfuras < Item
 
-  def update_quality
-      max_quality
-  end
 
-end
-
-class ConcertTickets < Item
-
-  def update_quality
-
-    @sell_in -= 1
-
-    if @sell_in <= -1
-          @quality = 0
-        elsif @sell_in <= 5
-          @quality += 3
-        elsif @sell_in <= 10
-          @quality += 2
-        else 
-          @quality += 1
-    end
-    max_quality
-
-  end
-
-end
-class ConjuredManaCake < Item
-
-  def update_quality
-
-    @quality -= 2
-    max_quality
-
-  end
-
-end
 
 
 
